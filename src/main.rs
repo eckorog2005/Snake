@@ -1,3 +1,5 @@
+mod game;
+
 use std::io;
 
 use ratatui::{
