@@ -70,8 +70,14 @@ impl Game {
         };
         let snake = VecDeque::from([
             head,
-            Point { x: head.x - 1, ..head },
-            Point { x: head.x - 2, ..head },
+            Point {
+                x: head.x - 1,
+                ..head
+            },
+            Point {
+                x: head.x - 2,
+                ..head
+            },
         ]);
         let mut game = Game {
             width,
@@ -191,7 +197,10 @@ mod tests {
     #[test]
     fn starts_in_the_middle_heading_right() {
         let game = game();
-        assert_eq!(game.snake().collect::<Vec<_>>(), [p(5, 5), p(4, 5), p(3, 5)]);
+        assert_eq!(
+            game.snake().collect::<Vec<_>>(),
+            [p(5, 5), p(4, 5), p(3, 5)]
+        );
         assert_eq!(game.status(), Status::Playing);
         assert_eq!(game.score(), 0);
     }
@@ -208,7 +217,10 @@ mod tests {
     fn tick_moves_forward_without_growing() {
         let mut game = game();
         game.tick();
-        assert_eq!(game.snake().collect::<Vec<_>>(), [p(6, 5), p(5, 5), p(4, 5)]);
+        assert_eq!(
+            game.snake().collect::<Vec<_>>(),
+            [p(6, 5), p(5, 5), p(4, 5)]
+        );
     }
 
     #[test]
